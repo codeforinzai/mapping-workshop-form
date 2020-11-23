@@ -24,17 +24,23 @@
         ></v-text-field>
       </v-col>
     </v-row>
+    <v-row>
+      <v-col>
+        <clickable-map v-model="internalValue" />
+        </v-col>
+      </v-row>
   </v-container>
 </template>
 
 <script lang="ts">
 import { Component, Prop, Vue } from 'nuxt-property-decorator'
 import FormLabel from '@/components/FormLabel.vue'
+import ClickableMap from '@/components/ClickableMap.vue'
 
-@Component({ components: { FormLabel } })
+@Component({ components: { FormLabel, ClickableMap } })
 export default class DatePicker extends Vue {
   @Prop({ default: 'label' }) label!: String
-  @Prop({ default: { latitude: 35.8051665, longitude: 140.126533 } })
+  @Prop()
   value!: Coordinate
 
   get internalValue(): Coordinate {

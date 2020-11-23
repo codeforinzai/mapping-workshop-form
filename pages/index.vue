@@ -4,8 +4,8 @@
       <v-container>
         <v-row justify="center" align="center">
           <v-col cols="12" sm="10" md="10">
-            <v-tabs-items v-model="tab">
-              <v-tab-item href="#name">
+            <v-tabs-items v-model="tab" :touchless="true">
+              <v-tab-item>
                 <v-card flat>
                   <v-card-text>
                     <where-when-who-form
@@ -60,7 +60,7 @@ export default class MappingWorkshopForm extends Vue {
     who: '',
   }
 
-  coordinate: Coordinate = { latitude: 35.8051665, longitude: 140.126533 }
+  coordinate: Coordinate = {longitude: null, latitude: null};
   memo: String = ''
 }
 </script>

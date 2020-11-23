@@ -1,5 +1,5 @@
 interface WhereWhenWho {
-  where: String;
-  when: String;
-  who: String;
+  where: string;
+  when: string;
+  who: string;
 }

@@ -1,4 +1,4 @@
 interface Coordinate {
-  latitude: number;
-  longitude: number;
+  latitude: number | null;
+  longitude: number | null;
 }
