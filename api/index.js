@@ -1,11 +1,11 @@
-const express = require("express");
-const app = express();
+const express = require('express')
+const app = express()
 
-app.get("/", function(req, res) {
-res.send("HelloWorld");
-});
+app.get('/', function (_, res) {
+  res.send('HelloWorld')
+})
 
 module.exports = {
-path: "/api/",
-handler: app
-};
+  path: '/api/',
+  handler: app,
+}

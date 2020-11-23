@@ -8,7 +8,9 @@
               <v-tab-item href="#name">
                 <v-card flat>
                   <v-card-text>
-                    <where-when-who-form v-model="whereWhenWho"></where-when-who-form>
+                    <where-when-who-form
+                      v-model="whereWhenWho"
+                    ></where-when-who-form>
                   </v-card-text>
                 </v-card>
               </v-tab-item>
@@ -32,37 +34,33 @@
       </v-container>
     </v-main>
     <v-footer :absolute="true" app>
-      <v-tabs
-        fixed-tabs
-        v-model="tab"
-      >
-        <v-tab>
-          どこで？いつ？だれが？
-        </v-tab>
-        <v-tab>
-          緯度・経度
-        </v-tab>
-        <v-tab>
-          メモをかく
-        </v-tab>
+      <v-tabs v-model="tab" fixed-tabs>
+        <v-tab> どこで？いつ？だれが？ </v-tab>
+        <v-tab> 緯度・経度 </v-tab>
+        <v-tab> メモをかく </v-tab>
       </v-tabs>
     </v-footer>
   </v-app>
 </template>
 
-<script lang='ts'>
-import { Component, Vue } from 'nuxt-property-decorator';
-import WhereWhenWhoForm from '@/components/WhereWhenWhoForm.vue';
-import Memo from '@/components/Memo.vue';
-import CoordinatePicker from '@/components/CoordinatePicker.vue';
+<script lang="ts">
+import { Component, Vue } from 'nuxt-property-decorator'
+import WhereWhenWhoForm from '@/components/WhereWhenWhoForm.vue'
+import Memo from '@/components/Memo.vue'
+import CoordinatePicker from '@/components/CoordinatePicker.vue'
 
 @Component({
-  components: { WhereWhenWhoForm, Memo, CoordinatePicker }
+  components: { WhereWhenWhoForm, Memo, CoordinatePicker },
 })
 export default class MappingWorkshopForm extends Vue {
-  tab: String = '';
-  whereWhenWho: WhereWhenWho = {where: "", when: new Date().toISOString().substring(0, 10), who: ""};
-  coordinate: Coordinate = {latitude: 35.8051665, longitude: 140.126533};
-  memo: String = '';
+  tab: String = ''
+  whereWhenWho: WhereWhenWho = {
+    where: '',
+    when: new Date().toISOString().substring(0, 10),
+    who: '',
+  }
+
+  coordinate: Coordinate = { latitude: 35.8051665, longitude: 140.126533 }
+  memo: String = ''
 }
 </script>

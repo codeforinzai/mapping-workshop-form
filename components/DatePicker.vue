@@ -28,20 +28,21 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue, Emit } from 'nuxt-property-decorator'
+import { Component, Prop, Vue } from 'nuxt-property-decorator'
 import InlineForm from '@/components/InlineForm.vue'
 
-@Component ({components: { InlineForm }})
+@Component({ components: { InlineForm } })
 export default class DatePicker extends Vue {
-  @Prop({default: "label"}) label!: String;
-  @Prop({default: new Date().toISOString().substr(0, 10)}) value!: String;
-  pickerOpened: boolean = false;
+  @Prop({ default: 'label' }) label!: String
+  @Prop({ default: new Date().toISOString().substr(0, 10) }) value!: String
+  pickerOpened: boolean = false
   get internalValue(): String {
-    return this.value;
+    return this.value
   }
+
   set internalValue(v: String) {
     if (this.value !== v) {
-      this.$emit('input', v);
+      this.$emit('input', v)
     }
   }
 }

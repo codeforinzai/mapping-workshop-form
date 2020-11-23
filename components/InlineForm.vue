@@ -11,10 +11,10 @@
 
 <script lang="ts">
 import { Component, Prop, Vue } from 'nuxt-property-decorator'
-import FormLabel from '@/components/FormLabel.vue';
+import FormLabel from '@/components/FormLabel.vue'
 
-@Component ({ components: { FormLabel }})
+@Component({ components: { FormLabel } })
 export default class InlineForm extends Vue {
-  @Prop({default: "label"}) label!: String;
+  @Prop({ default: 'label' }) label!: String
 }
 </script>

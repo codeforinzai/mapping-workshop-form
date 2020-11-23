@@ -1,6 +1,11 @@
 <template>
   <inline-form :label="label">
-    <v-text-field outlined :value="value" @input="input" hide-details="auto"></v-text-field>
+    <v-text-field
+      outlined
+      :value="value"
+      hide-details="auto"
+      @input="input"
+    ></v-text-field>
   </inline-form>
 </template>
 
@@ -8,10 +13,10 @@
 import { Component, Prop, Vue, Emit } from 'nuxt-property-decorator'
 import InlineForm from '@/components/InlineForm.vue'
 
-@Component ({components: { InlineForm }})
+@Component({ components: { InlineForm } })
 export default class TextField extends Vue {
-  @Prop({default: "text"}) label!: String;
-  @Prop() value!: String;
+  @Prop({ default: 'text' }) label!: String
+  @Prop() value!: String
   @Emit()
   input(e: any) {
     return e as String
