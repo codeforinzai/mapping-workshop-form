@@ -1,10 +1,10 @@
 <template>
   <v-container>
     <v-row align="center">
-      <v-col align="right">
+      <v-col align="right" cols="2">
         <form-label label="緯度(いど)" />
       </v-col>
-      <v-col>
+      <v-col cols="4">
         <v-text-field
           v-model="internalValue.latitude"
           outlined
@@ -12,10 +12,10 @@
           hide-details="auto"
         ></v-text-field>
       </v-col>
-      <v-col align="right">
+      <v-col align="right" cols="2">
         <form-label label="経度(けいど)" />
       </v-col>
-      <v-col>
+      <v-col cols="4">
         <v-text-field
           v-model="internalValue.longitude"
           outlined
@@ -27,8 +27,8 @@
     <v-row>
       <v-col>
         <clickable-map v-model="internalValue" />
-        </v-col>
-      </v-row>
+      </v-col>
+    </v-row>
   </v-container>
 </template>
 

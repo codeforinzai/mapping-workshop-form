@@ -1,9 +1,11 @@
 <template>
   <v-container>
     <v-row>
-      <v-col cols="12">
-        <v-subheader><form-label :label="label" /></v-subheader>
-        <v-textarea v-model="internalValue" outlined></v-textarea>
+      <v-col cols="2" align="right">
+        <form-label :label="label" />
+      </v-col>
+      <v-col cols="10">
+        <v-textarea v-model="internalValue" outlined />
       </v-col>
     </v-row>
   </v-container>

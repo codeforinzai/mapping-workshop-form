@@ -28,6 +28,17 @@
                   </v-card-text>
                 </v-card>
               </v-tab-item>
+              <v-tab-item>
+                <v-card flat>
+                  <v-card-text
+                    ><confirm-submit
+                      :where-when-who="whereWhenWho"
+                      :coordinate="coordinate"
+                      :memo="memo"
+                      @submit="handleSubmit"
+                  /></v-card-text>
+                </v-card>
+              </v-tab-item>
             </v-tabs-items>
           </v-col>
         </v-row>
@@ -38,6 +49,7 @@
         <v-tab> どこで？いつ？だれが？ </v-tab>
         <v-tab> 緯度・経度 </v-tab>
         <v-tab> メモをかく </v-tab>
+        <v-tab> 内容の確認 </v-tab>
       </v-tabs>
     </v-footer>
   </v-app>
@@ -48,9 +60,10 @@ import { Component, Vue } from 'nuxt-property-decorator'
 import WhereWhenWhoForm from '@/components/WhereWhenWhoForm.vue'
 import Memo from '@/components/Memo.vue'
 import CoordinatePicker from '@/components/CoordinatePicker.vue'
+import ConfirmSubmit from '@/components/ConfirmSubmit.vue'
 
 @Component({
-  components: { WhereWhenWhoForm, Memo, CoordinatePicker },
+  components: { WhereWhenWhoForm, Memo, CoordinatePicker, ConfirmSubmit },
 })
 export default class MappingWorkshopForm extends Vue {
   tab: String = ''
@@ -60,7 +73,21 @@ export default class MappingWorkshopForm extends Vue {
     who: '',
   }
 
-  coordinate: Coordinate = {longitude: null, latitude: null};
+  coordinate: Coordinate = { longitude: null, latitude: null }
   memo: String = ''
+  handleSubmit() {
+    this.$axios
+      .$post('/api', {
+        locationName: this.whereWhenWho.where,
+        reporterName: this.whereWhenWho.who,
+        dateString: this.whereWhenWho.when,
+        memo: this.memo,
+        latitude: this.coordinate.latitude,
+        longitude: this.coordinate.longitude,
+      })
+      .then((_) => {
+        // implement post send process.
+      })
+  }
 }
 </script>
