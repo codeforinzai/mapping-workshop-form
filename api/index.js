@@ -13,10 +13,6 @@ const TOKEN_PATH =
 const SPREADSHEET_ID = process.env.SPREADSHEET_ID || ''
 const WORKSHEET_NAME = process.env.WORKSHEET_NAME || 'x'
 
-if (SPREADSHEET_ID.length === 0) {
-  process.exit(-1)
-}
-
 const content = fs.readFileSync(CREDENTIAL_PATH)
 const credentials = JSON.parse(content)
 const clinetSecret = credentials.web.client_secret
@@ -54,10 +50,9 @@ function writeData(auth, data, cb) {
     },
     (err, res) => {
       if (err) {
-        cb(err, null)
+        return cb(err, null)
       } else {
-        const rows = res.data.values
-        cb(null, rows)
+        return cb(null, { spreadsheetId: res.data.spreadsheetId })
       }
     }
   )
@@ -69,11 +64,11 @@ app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json())
 
 app.post('/', function (req, res) {
-  writeData(oAuth2Client, req.body, function (err, data) {
+  return writeData(oAuth2Client, req.body, function (err, data) {
     if (err) {
-      res.send(err)
+      return res.send(err)
     } else {
-      res.json(data)
+      return res.json(data)
     }
   })
 })
